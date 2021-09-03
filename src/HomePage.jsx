@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import listData from './list';
+import ListData from './List';
+
 class Homepage extends Component {
   constructor(props) {
     super(props);
@@ -18,9 +19,8 @@ class Homepage extends Component {
   render() {
     return (
       <div>
-        <h1 className="bold-green">HomePage</h1>
-        {JSON.stringify(this.state.posts)}
-        <listData data={this.state.posts} />
+        <h1>HomePage</h1>
+        <ListData data={this.state.posts} />
       </div>
     );
   }
