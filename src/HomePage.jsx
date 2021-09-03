@@ -10,6 +10,8 @@ class Homepage extends Component {
     };
   }
 
+  ParentFun = (e, title) => console.log('From parent e', e, title);
+
   componentDidMount() {
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then(resp => resp.json())
@@ -20,7 +22,9 @@ class Homepage extends Component {
     return (
       <div>
         <h1>HomePage</h1>
-        <ListData data={this.state.posts} />
+        <ListData data={this.state.posts} clickedInChild={this.ParentFun}>
+          ListData children value
+        </ListData>
       </div>
     );
   }

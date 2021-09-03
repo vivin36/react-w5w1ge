@@ -1,8 +1,10 @@
 import React from 'react';
 
-let ListData = ({ data }) => {
+let ListData = ({ data, clickedInChild, children }) => {
+  const clickedData = (id, e) => console.log('clicked id => ', id, 'e', e);
   return (
     <p>
+      <p style={{ color: 'red' }}>{children}</p>
       <table>
         <th>User Id</th>
         <th>Title</th>
@@ -11,8 +13,15 @@ let ListData = ({ data }) => {
           return (
             <tr>
               <td>{item.id}</td>
-              <tr>{item.title}</tr>
-              <td>{item.body}</td>
+              <tr onClick={e => clickedInChild(item.title, e)}>{item.title}</tr>
+              <td>
+                <button
+                  onClick={e => clickedData(item.id, e)}
+                  style={{ color: 'red', backgroundColor: 'black' }}
+                >
+                  click this button
+                </button>
+              </td>
             </tr>
           );
         })}
